@@ -19,7 +19,7 @@ func main() {
 	// db_connection := "user=postgres dbname=chicago_business_intelligence password=root host=postgresdb sslmode=disable port = 5433" //docker
 
 	//Database application running on Google Cloud Platform.
-	db_connection := "user=postgres dbname=chicago_business_intelligence password=root host=cbi-gcp-tutorial-a20544029:us-central1:postgres sslmode=disable port = 5432"
+	db_connection := "user=postgres dbname=chicago_business_intelligence password=root host=cbi-gcp-tutorial-a20544029:us-central1:post sslmode=disable port = 5432"
 
 	db, err := sql.Open("postgres", db_connection)
 	if err != nil {
