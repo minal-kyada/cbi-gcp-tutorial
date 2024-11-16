@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"main/models"
-	"net/http"
+	"os"
 	"strconv"
 
 	"github.com/kelvins/geocoder"
@@ -24,11 +24,11 @@ func GetTaxiTrips(db *sql.DB) {
 
 	fmt.Println("GetTaxiTrips: Collecting Taxi Trips Data")
 
-	drop_table := `drop table if exists taxi_trips`
-	_, err := db.Exec(drop_table)
-	if err != nil {
-		panic(err)
-	}
+	// drop_table := `drop table if exists taxi_trips`
+	// _, err := db.Exec(drop_table)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	create_table := `CREATE TABLE IF NOT EXISTS "taxi_trips" (
 						"id"   SERIAL , 
@@ -51,14 +51,27 @@ func GetTaxiTrips(db *sql.DB) {
 
 	// While doing unit-testing keep the limit value to 500
 	// later you could change it to 1000, 2000, 10,000, etc.
-	var url = "https://data.cityofchicago.org/resource/wrvz-psew.json?$limit=10"
+	// var url = "https://data.cityofchicago.org/resource/wrvz-psew.json?$limit=10"
 
-	res, err := http.Get(url)
+	// res, err := http.Get(url)
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// body, _ := ioutil.ReadAll(res.Body)
+
+	filePath := "taxi_trips_response.json"
+
+	// Read the JSON file
+	jsonFile, err := os.Open(filePath)
 	if err != nil {
 		panic(err)
 	}
+	defer jsonFile.Close()
 
-	body, _ := ioutil.ReadAll(res.Body)
+	// Read the file's content
+	body, _ := ioutil.ReadAll(jsonFile)
+
 	var taxi_trips_list models.TaxiTripsJsonRecords
 	json.Unmarshal(body, &taxi_trips_list)
 

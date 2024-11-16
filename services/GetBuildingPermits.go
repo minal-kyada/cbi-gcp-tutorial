@@ -14,11 +14,11 @@ func GetBuildingPermits(db *sql.DB) {
 	fmt.Println("Collecting Building Permits Data")
 
 	// Drop table if it exists
-	dropTable := `DROP TABLE IF EXISTS building_permits`
-	_, err := db.Exec(dropTable)
-	if err != nil {
-		fmt.Println("Error dropping table: ", err)
-	}
+	// dropTable := `DROP TABLE IF EXISTS building_permits`
+	// _, err := db.Exec(dropTable)
+	// if err != nil {
+	// 	fmt.Println("Error dropping table: ", err)
+	// }
 
 	// Create the table for building permits
 	createTable := `
