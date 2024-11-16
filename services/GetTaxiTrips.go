@@ -63,7 +63,7 @@ func GetTaxiTrips(db *sql.DB) {
 	json.Unmarshal(body, &taxi_trips_list)
 
 	prettyJSON, _ := json.MarshalIndent(taxi_trips_list, "", "    ")
-	fmt.Println("Building Permit Data: ", string(prettyJSON))
+	fmt.Println("Building Permit Dat: ", string(prettyJSON))
 
 	// Get your geocoder.ApiKey from here :
 	// https://developers.google.com/maps/documentation/geocoding/get-api-key?authuser=2
