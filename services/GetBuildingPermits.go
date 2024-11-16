@@ -22,7 +22,7 @@ func GetBuildingPermits(db *sql.DB) {
 
 	// Create the table for building permits
 	createTable := `
-    CREATE TABLE IF NOT EXISTS building_permits (
+    CREATE TABLE IF NOT EXISTS "building_permits" (
         id SERIAL PRIMARY KEY,
         permit_id VARCHAR(255) UNIQUE,
         permit_code VARCHAR(255),
@@ -66,9 +66,9 @@ func GetBuildingPermits(db *sql.DB) {
         longitude DOUBLE PRECISION
     );`
 
-	_, err = db.Exec(createTable)
-	if err != nil {
-		panic(err)
+	_, _err := db.Exec(createTable)
+	if _err != nil {
+		panic(_err)
 	}
 	fmt.Println("Created Table for Building Permits")
 
