@@ -3,7 +3,10 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"log"
 	"main/services"
+	"net/http"
+	"os"
 	"time"
 
 	_ "github.com/lib/pq"
@@ -23,11 +26,11 @@ func main() {
 		panic(err)
 	}
 
-	// port := os.Getenv("PORT")
-	// if port == "" {
-	// 	port = "8080"
-	// }
-	// log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 
 	err = db.Ping()
 	if err != nil {
