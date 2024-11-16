@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM golang:1.23-alpine
+RUN apk update && apk add --no-cache ca-certificates
 ENV PORT 8080
 ENV HOSTDIR 0.0.0.0
 
