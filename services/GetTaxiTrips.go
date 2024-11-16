@@ -68,7 +68,7 @@ func GetTaxiTrips(db *sql.DB) {
 	// Get your geocoder.ApiKey from here :
 	// https://developers.google.com/maps/documentation/geocoding/get-api-key?authuser=2
 
-	geocoder.ApiKey = "ADD-YOUR-API-KEY"
+	geocoder.ApiKey = "AIzaSyCbLGZg57ogJtEZCyK5_Uz2y_0MmKWwbYc"
 
 	for i := 0; i < len(taxi_trips_list); i++ {
 
