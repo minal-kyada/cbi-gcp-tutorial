@@ -23,6 +23,3 @@ steps:
 images:
 - gcr.io/cbi-gcp-tutorial-a20544029/go-microservice
 - gcr.io/cbi-gcp-tutorial-a20544029/pgadmin
-
-options:
-  serviceAccount: "901891547103-compute@developer.gserviceaccount.com"
