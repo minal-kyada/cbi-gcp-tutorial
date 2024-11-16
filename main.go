@@ -48,6 +48,8 @@ func main() {
 		// build and fine-tune functions to pull data from different data sources
 		// This is a code snippet to show you how to pull data from different data sources.
 
+		fmt.Println(("Calling CBI microservices"))
+
 		services.GetUnemploymentRates(db)
 		fmt.Println("Done with unemployement rates")
 
