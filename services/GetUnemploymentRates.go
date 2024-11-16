@@ -5,8 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"main/models"
 	"net/http"
+	"time"
 )
 
 func GetUnemploymentRates(db *sql.DB) {
@@ -72,12 +74,21 @@ func GetUnemploymentRates(db *sql.DB) {
 
 	// While doing unit-testing keep the limit value to 500
 	// later you could change it to 1000, 2000, 10,000, etc.
-	var url = "https://data.cityofchicago.org/resource/iqnk-2tcu.json?$limit=100"
+	// var url = "https://data.cityofchicago.org/resource/iqnk-2tcu.json?$limit=100"
 
-	res, err := http.Get(url)
-	if err != nil {
-		panic(err)
+	// res, err := http.Get(url)
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	client := &http.Client{
+		Timeout: 30 * time.Second, // Increase timeout to 30 seconds
 	}
+	res, err := client.Get("https://data.cityofchicago.org/resource/iqnk-2tcu.json?$limit=50")
+	if err != nil {
+		log.Fatalf("Error making request: %v", err)
+	}
+	defer res.Body.Close()
 
 	fmt.Println("Received data from SODA REST API for Unemployment")
 
