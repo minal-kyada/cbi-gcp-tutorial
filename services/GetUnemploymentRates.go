@@ -20,11 +20,11 @@ func GetUnemploymentRates(db *sql.DB) {
 	// Data Collection needed from two data sources:
 	// 1. https://data.cityofchicago.org/Health-Human-Services/Public-Health-Statistics-Selected-public-health-in/iqnk-2tcu/data
 
-	drop_table := `drop table if exists unemployment`
-	_, err := db.Exec(drop_table)
-	if err != nil {
-		panic(err)
-	}
+	// drop_table := `drop table if exists unemployment`
+	// _, err := db.Exec(drop_table)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	create_table := `CREATE TABLE IF NOT EXISTS "unemployment" (
 						"id"   SERIAL , 
@@ -84,7 +84,7 @@ func GetUnemploymentRates(db *sql.DB) {
 	client := &http.Client{
 		Timeout: 30 * time.Second, // Increase timeout to 30 seconds
 	}
-	res, err := client.Get("https://data.cityofchicago.org/resource/iqnk-2tcu.json?$limit=50")
+	res, err := client.Get("https://data.cityofchicago.org/resource/iqnk-2tcu.json?$limit=10")
 	if err != nil {
 		log.Fatalf("Error making request: %v", err)
 	}
